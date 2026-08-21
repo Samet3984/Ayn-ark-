@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Müzik Platformu - Tam Sürüm</title>
+    <title>Müzik Platformu</title>
     <style>
         * {
             box-sizing: border-box;
@@ -78,29 +78,40 @@
             margin-bottom: 8px;
         }
         
-        /* Ana Uygulama Alanı */
-        #app-screen {
+        /* Ekran Yönetimi */
+        .screen {
             display: none;
         }
+        .screen.active {
+            display: block;
+        }
+
+        /* Profil Detay Kutusu */
         .profile-card {
             background-color: #242832;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 15px;
+            border-radius: 12px;
             margin-bottom: 15px;
+            border-left: 4px solid #00ff88;
+        }
+        .profile-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
         }
-        .profile-info h4 {
+        .profile-header h4 {
             color: #00ff88;
-            font-size: 15px;
+            font-size: 16px;
         }
-        .profile-info p {
-            color: #aaa;
+        .profile-details {
             font-size: 12px;
+            color: #bbb;
+            line-height: 1.5;
         }
+
         .playlist {
-            max-height: 220px;
+            max-height: 200px;
             overflow-y: auto;
             margin-bottom: 15px;
         }
@@ -117,26 +128,12 @@
         }
         .song-item:hover {
             background-color: #2f3542;
-            border-left: 4px solid #00ff88;
         }
         .player-bar {
             background-color: #12141c;
             padding: 12px;
             border-radius: 10px;
             text-align: center;
-        }
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 8px;
-        }
-        .control-btn {
-            background: none;
-            border: none;
-            color: #00ff88;
-            font-size: 18px;
-            cursor: pointer;
         }
         .logout-btn {
             background-color: #ff4757;
@@ -149,7 +146,7 @@
 
     <div class="container">
         <!-- GİRİŞ EKRANI -->
-        <div id="login-screen">
+        <div id="login-screen" class="screen active">
             <h2>Giriş Yap</h2>
             <div class="input-group">
                 <input type="text" id="username" placeholder="Kullanıcı Adı (Örn: Samet)">
@@ -166,18 +163,22 @@
         </div>
 
         <!-- ANA PLATFORM EKRANI -->
-        <div id="app-screen">
-            <!-- Profil Bilgileri -->
+        <div id="app-screen" class="screen">
+            <!-- Detaylı Profil Kartı -->
             <div class="profile-card">
-                <div class="profile-info">
+                <div class="profile-header">
                     <h4 id="profile-name">Kullanıcı</h4>
-                    <p>Aktif Üye • Standart Plan</p>
+                    <span style="font-size: 18px;">⭐</span>
                 </div>
-                <span style="font-size: 20px;">🎧</span>
+                <div class="profile-details">
+                    <p><b>Hesap Türü:</b> Premium Üye</p>
+                    <p><b>Favori Tür:</b> Lofi & Enstrümantal</p>
+                    <p><b>Oturum Durumu:</b> Aktif ve Güvenli</p>
+                </div>
             </div>
 
             <div class="input-group">
-                <input type="text" placeholder="Şarkı, sanatçı veya albüm ara...">
+                <input type="text" placeholder="Şarkı veya sanatçı ara...">
             </div>
 
             <h3 style="font-size: 14px; text-align: left; margin-bottom: 8px;">Çalma Listesi</h3>
@@ -205,7 +206,7 @@
                 </div>
             </div>
 
-            <!-- Aktif Müzik Çalar Paneli -->
+            <!-- Müzik Çalar -->
             <div class="player-bar">
                 <div id="now-playing" style="font-size: 13px; color: #00ff88; margin-bottom: 5px;">Şarkı Seçilmedi</div>
                 <audio id="audio-player" controls style="width: 100%; height: 35px;"></audio>
@@ -216,19 +217,25 @@
     </div>
 
     <script>
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
         function login() {
             const usernameInput = document.getElementById('username').value;
             const displayName = usernameInput ? usernameInput : 'Müziksever';
             document.getElementById('profile-name').innerText = displayName;
             
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('app-screen').style.display = 'block';
+            // Tarayıcı geçmişine durum kaydederek geri tuşunun siteyi kapatmasını önlüyoruz
+            history.pushState({ screen: 'app' }, '', '');
+            showScreen('app-screen');
         }
 
         function logout() {
             document.getElementById('audio-player').pause();
-            document.getElementById('app-screen').style.display = 'none';
-            document.getElementById('login-screen').style.display = 'block';
+            history.pushState({ screen: 'login' }, '', '');
+            showScreen('login-screen');
         }
 
         function playRealSong(songTitle, audioUrl) {
@@ -241,6 +248,15 @@
                 console.log("Oynatma hatası:", error);
             });
         }
+
+        // Tarayıcı geri tuşuna basıldığında doğru ekranda kalmasını sağlayan kontrol
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.screen === 'login') {
+                showScreen('login-screen');
+            } else {
+                showScreen('app-screen');
+            }
+        });
     </script>
 
 </body>
