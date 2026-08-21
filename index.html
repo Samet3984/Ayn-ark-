@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>Aynı Şarkı</title>
 
 <style>
@@ -28,9 +29,9 @@
 body{
     font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     background:
-        radial-gradient(circle at 20% 0%,rgba(139,92,246,.18),transparent 35%),
-        radial-gradient(circle at 90% 20%,rgba(236,72,153,.12),transparent 30%),
-        var(--bg);
+    radial-gradient(circle at 20% 0%,rgba(139,92,246,.18),transparent 35%),
+    radial-gradient(circle at 90% 20%,rgba(236,72,153,.12),transparent 30%),
+    var(--bg);
     color:var(--text);
     min-height:100vh;
     overflow-x:hidden;
@@ -68,7 +69,7 @@ button{
 .logo{
     width:76px;
     height:76px;
-    margin:0 auto 24px;
+    margin:auto auto 24px;
     border-radius:24px;
     display:flex;
     align-items:center;
@@ -96,8 +97,8 @@ button{
 
 .input-group label{
     display:block;
-    font-size:13px;
     color:var(--muted);
+    font-size:13px;
     margin-bottom:8px;
 }
 
@@ -107,7 +108,7 @@ button{
     background:rgba(255,255,255,.05);
     border:1px solid var(--border);
     border-radius:16px;
-    color:#fff;
+    color:white;
     outline:none;
 }
 
@@ -146,12 +147,10 @@ button{
     font-weight:700;
     margin-bottom:12px;
     text-transform:uppercase;
-    letter-spacing:1px;
 }
 
 .song-box h2{
     font-size:32px;
-    line-height:1.15;
     margin-bottom:10px;
 }
 
@@ -170,7 +169,6 @@ button{
     left:17px;
     top:50%;
     transform:translateY(-50%);
-    color:var(--muted);
 }
 
 .search-box input{
@@ -194,8 +192,8 @@ button{
     transition:.2s;
 }
 
-.song-option:hover{
-    background:rgba(255,255,255,.07);
+.song-option:active{
+    transform:scale(.98);
 }
 
 .album{
@@ -280,15 +278,14 @@ button{
 }
 
 .profile{
-    cursor:pointer;
     display:flex;
     align-items:center;
-    gap:9px;
+    cursor:pointer;
 }
 
 .avatar{
-    width:38px;
-    height:38px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     background:linear-gradient(135deg,#6366f1,#ec4899);
     display:flex;
@@ -316,8 +313,8 @@ button{
     padding:20px;
     border-radius:24px;
     background:
-        linear-gradient(135deg,rgba(139,92,246,.25),rgba(236,72,153,.12)),
-        var(--card);
+    linear-gradient(135deg,rgba(139,92,246,.25),rgba(236,72,153,.12)),
+    var(--card);
     border:1px solid var(--border);
     margin-bottom:24px;
 }
@@ -327,7 +324,6 @@ button{
     font-size:12px;
     font-weight:800;
     text-transform:uppercase;
-    letter-spacing:.8px;
     margin-bottom:14px;
 }
 
@@ -356,6 +352,67 @@ button{
 .current-info p{
     color:var(--muted);
     font-size:13px;
+}
+
+/* PLAYER */
+
+.player{
+    margin-top:18px;
+}
+
+.progress{
+    width:100%;
+    height:5px;
+    background:rgba(255,255,255,.12);
+    border-radius:10px;
+    appearance:none;
+}
+
+.progress::-webkit-slider-thumb{
+    appearance:none;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:white;
+}
+
+.player-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:10px;
+}
+
+.player-time{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.player-controls{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.player-btn{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+.play-btn{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:white;
+    font-size:18px;
+}
+
+.volume{
+    width:70px;
 }
 
 .change-song{
@@ -400,11 +457,6 @@ button{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:18px;
-    transition:.2s;
-}
-
-.person:hover{
-    background:var(--card2);
 }
 
 .person-avatar{
@@ -454,28 +506,6 @@ button{
 .chat-arrow{
     color:#777b8b;
     font-size:20px;
-}
-
-.empty{
-    padding:40px 20px;
-    text-align:center;
-    border:1px dashed rgba(255,255,255,.12);
-    border-radius:20px;
-}
-
-.empty-icon{
-    font-size:35px;
-    margin-bottom:12px;
-}
-
-.empty h3{
-    margin-bottom:7px;
-}
-
-.empty p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.5;
 }
 
 /* CHAT */
@@ -560,13 +590,11 @@ button{
 .message.me{
     align-self:flex-end;
     background:linear-gradient(135deg,var(--accent),#7c3aed);
-    border-bottom-right-radius:5px;
 }
 
 .message.other{
     align-self:flex-start;
     background:#191b24;
-    border-bottom-left-radius:5px;
 }
 
 .message-time{
@@ -584,8 +612,6 @@ button{
 }
 
 .chat-form{
-    max-width:900px;
-    margin:auto;
     display:flex;
     gap:8px;
 }
@@ -610,147 +636,121 @@ button{
 
 /* PROFILE */
 
-.profile-page{
+.profile-modal{
     position:fixed;
     inset:0;
-    z-index:90;
-    background:var(--bg);
+    z-index:120;
+    background:#090a0e;
     overflow-y:auto;
 }
 
 .profile-header{
-    position:sticky;
-    top:0;
-    z-index:5;
     height:70px;
-    padding:10px 16px;
     display:flex;
     align-items:center;
+    padding:10px 15px;
     gap:12px;
-    background:rgba(8,9,13,.92);
-    backdrop-filter:blur(20px);
     border-bottom:1px solid var(--border);
+    background:rgba(12,13,18,.95);
+    position:sticky;
+    top:0;
+    z-index:2;
 }
 
 .profile-header h2{
     font-size:18px;
 }
 
-.profile-back{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:rgba(255,255,255,.06);
-    color:white;
-    font-size:22px;
-}
-
-.profile-container{
+.profile-content{
     max-width:600px;
     margin:auto;
-    padding:28px 18px 110px;
+    padding:30px 18px 100px;
+}
+
+.profile-photo-area{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.profile-big-avatar{
+    width:110px;
+    height:110px;
+    margin:auto;
+    border-radius:50%;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+    font-weight:800;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    border:4px solid rgba(255,255,255,.08);
+}
+
+.profile-big-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.photo-btn{
+    margin-top:12px;
+    padding:10px 18px;
+    border-radius:14px;
+    color:white;
+    background:rgba(255,255,255,.08);
 }
 
 .profile-card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:25px;
-    padding:25px 20px;
-    text-align:center;
+    border-radius:22px;
+    padding:18px;
+    margin-bottom:15px;
 }
 
-.profile-photo-wrap{
-    position:relative;
-    width:110px;
-    height:110px;
-    margin:0 auto 16px;
+.profile-card h3{
+    margin-bottom:15px;
+    font-size:16px;
 }
 
-.profile-photo{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    object-fit:cover;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
-    font-weight:800;
-}
-
-.photo-button{
-    position:absolute;
-    right:0;
-    bottom:0;
-    width:36px;
-    height:36px;
-    border-radius:50%;
-    color:#fff;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-    border:3px solid var(--card);
-}
-
-.profile-card h1{
-    font-size:24px;
-    margin-bottom:5px;
-}
-
-.profile-card .username{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.profile-details{
-    margin-top:22px;
+.profile-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
+    gap:12px;
 }
 
-.detail{
-    text-align:left;
-    padding:15px;
-    background:rgba(255,255,255,.04);
-    border:1px solid var(--border);
-    border-radius:16px;
+.profile-field{
+    margin-bottom:13px;
 }
 
-.detail.full{
+.profile-field.full{
     grid-column:1/-1;
 }
 
-.detail-label{
+.profile-field label{
+    display:block;
     color:var(--muted);
-    font-size:11px;
-    margin-bottom:5px;
+    font-size:12px;
+    margin-bottom:7px;
 }
 
-.detail-value{
-    font-weight:600;
-}
-
-.edit-btn{
+.profile-field input,
+.profile-field select{
     width:100%;
-    margin-top:20px;
-    padding:14px;
-    border-radius:15px;
-    color:#fff;
-    font-weight:700;
-    background:linear-gradient(135deg,var(--accent),var(--accent2));
-}
-
-/* PROFILE EDIT */
-
-.profile-edit{
-    margin-top:18px;
-    padding:18px;
-    background:rgba(255,255,255,.035);
-    border-radius:20px;
+    padding:13px;
+    border-radius:13px;
+    color:white;
+    background:#191b24;
     border:1px solid var(--border);
+    outline:none;
 }
 
-.genre-list{
+.profile-field select option{
+    background:#191b24;
+}
+
+.genres{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
@@ -759,36 +759,24 @@ button{
 .genre{
     padding:9px 13px;
     border-radius:20px;
-    background:rgba(255,255,255,.06);
-    border:1px solid var(--border);
-    color:#bbb;
-    cursor:pointer;
+    background:#191b24;
+    color:#aaa;
     font-size:12px;
+    cursor:pointer;
 }
 
-.genre.selected{
-    background:rgba(139,92,246,.25);
-    border-color:var(--accent);
-    color:#fff;
+.genre.active{
+    color:white;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
 }
 
 .save-profile{
     width:100%;
-    padding:14px;
-    margin-top:18px;
-    border-radius:15px;
+    padding:15px;
+    border-radius:16px;
     color:white;
     font-weight:700;
     background:linear-gradient(135deg,var(--accent),var(--accent2));
-}
-
-.cancel-profile{
-    width:100%;
-    padding:13px;
-    margin-top:8px;
-    border-radius:15px;
-    color:white;
-    background:rgba(255,255,255,.07);
 }
 
 /* NAV */
@@ -833,6 +821,26 @@ button{
     font-size:21px;
 }
 
+/* EMPTY */
+
+.empty{
+    padding:40px 20px;
+    text-align:center;
+    border:1px dashed rgba(255,255,255,.12);
+    border-radius:20px;
+}
+
+.empty-icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.empty p{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:7px;
+}
+
 /* TOAST */
 
 .toast{
@@ -848,7 +856,7 @@ button{
     opacity:0;
     pointer-events:none;
     transition:.3s;
-    z-index:200;
+    z-index:300;
 }
 
 .toast.show{
@@ -868,11 +876,13 @@ button{
         box-shadow:0 30px 100px rgba(0,0,0,.6);
     }
 
-    .bottom-nav{
-        max-width:500px;
-        left:50%;
+    .profile-modal{
+        inset:5% 50%;
         transform:translateX(-50%);
-        border-radius:20px 20px 0 0;
+        width:500px;
+        border-radius:25px;
+        border:1px solid var(--border);
+        box-shadow:0 30px 100px rgba(0,0,0,.6);
     }
 }
 </style>
@@ -881,7 +891,9 @@ button{
 <body>
 
 <!-- LOGIN -->
+
 <section id="loginScreen" class="login-screen">
+
 <div class="login-box">
 
 <div class="logo">🎵</div>
@@ -894,13 +906,17 @@ Müzik üzerinden yeni insanlarla tanış.
 </p>
 
 <div class="input-group">
+
 <label>Kullanıcı adın</label>
-<input id="usernameInput"
+
+<input
+id="usernameInput"
 class="input"
-type="text"
 maxlength="20"
 placeholder="Örn. Samet"
-autocomplete="off">
+autocomplete="off"
+>
+
 </div>
 
 <button class="primary-btn" onclick="continueToMusic()">
@@ -911,12 +927,15 @@ Devam Et →
 </section>
 
 
-<!-- SONG SELECTION -->
+<!-- SONG -->
+
 <section id="songScreen" class="song-screen hidden">
 
 <div class="song-box">
 
-<div class="top-mini">🎧 Müzik seçimi</div>
+<div class="top-mini">
+🎧 Müzik seçimi
+</div>
 
 <h2>Şu an hangi şarkıyı dinliyorsun?</h2>
 
@@ -925,11 +944,16 @@ Bir şarkı seç. Aynı anda onu dinleyen insanları bulalım.
 </p>
 
 <div class="search-box">
+
 <span>🔎</span>
-<input id="songSearch"
+
+<input
+id="songSearch"
 class="input"
 placeholder="Şarkı veya sanatçı ara..."
-oninput="filterSongs()">
+oninput="filterSongs()"
+>
+
 </div>
 
 <div id="songList" class="song-list"></div>
@@ -938,7 +962,8 @@ oninput="filterSongs()">
 </section>
 
 
-<!-- MAIN APP -->
+<!-- APP -->
+
 <div id="app" class="app hidden">
 
 <header class="header">
@@ -946,12 +971,17 @@ oninput="filterSongs()">
 <div class="header-inner">
 
 <div class="brand">
+
 <div class="brand-icon">🎵</div>
+
 <div class="brand-name">Aynı Şarkı</div>
+
 </div>
 
 <div class="profile" onclick="openProfile()">
+
 <div id="headerAvatar" class="avatar">S</div>
+
 </div>
 
 </div>
@@ -968,18 +998,76 @@ oninput="filterSongs()">
 
 <div class="current-content">
 
-<img id="currentAlbum"
+<img
+id="currentAlbum"
 class="current-album"
 src=""
-alt="">
+>
 
 <div class="current-info">
 
 <h3 id="currentTitle">—</h3>
+
 <p id="currentArtist">—</p>
 
 </div>
+
 </div>
+
+
+<!-- MUSIC PLAYER -->
+
+<div class="player">
+
+<audio id="audioPlayer" preload="metadata"></audio>
+
+<input
+id="progressBar"
+class="progress"
+type="range"
+min="0"
+max="100"
+value="0"
+oninput="seekAudio()"
+>
+
+<div class="player-row">
+
+<span id="currentTime" class="player-time">
+0:00
+</span>
+
+<div class="player-controls">
+
+<button class="player-btn" onclick="restartSong()">
+↺
+</button>
+
+<button
+id="playButton"
+class="play-btn"
+onclick="toggleAudio()"
+>
+▶
+</button>
+
+</div>
+
+<input
+id="volumeControl"
+class="volume"
+type="range"
+min="0"
+max="1"
+step=".01"
+value=".8"
+oninput="changeVolume()"
+>
+
+</div>
+
+</div>
+
 
 <button class="change-song" onclick="changeSong()">
 🎵 Şarkıyı değiştir
@@ -1021,7 +1109,7 @@ Ana Sayfa
 Şarkım
 </button>
 
-<button class="nav-item" onclick="showToast('Sohbetler yakında aktif olacak 💬')">
+<button class="nav-item">
 <span class="nav-icon">💬</span>
 Sohbetler
 </button>
@@ -1032,28 +1120,42 @@ Profil
 </button>
 
 </div>
+
 </nav>
 
 </div>
 
 
 <!-- CHAT -->
+
 <section id="chat" class="chat hidden">
 
 <header class="chat-header">
 
-<button class="back-btn" onclick="closeChat()">←</button>
+<button class="back-btn" onclick="closeChat()">
+←
+</button>
 
 <div class="chat-person">
 
-<div id="chatAvatar" class="chat-person-avatar">A</div>
+<div id="chatAvatar" class="chat-person-avatar">
+A
+</div>
 
 <div>
-<div id="chatName" class="chat-name">Kullanıcı</div>
-<div class="chat-online">● çevrimiçi</div>
+
+<div id="chatName" class="chat-name">
+Kullanıcı
+</div>
+
+<div class="chat-online">
+● çevrimiçi
 </div>
 
 </div>
+
+</div>
+
 </header>
 
 <div id="messages" class="messages"></div>
@@ -1062,187 +1164,178 @@ Profil
 
 <form class="chat-form" onsubmit="sendMessage(event)">
 
-<input id="messageInput"
+<input
+id="messageInput"
 class="chat-input"
 placeholder="Mesaj yaz..."
-autocomplete="off">
+autocomplete="off"
+>
 
-<button class="send-btn" type="submit">➤</button>
+<button class="send-btn">
+➤
+</button>
 
 </form>
 
 </div>
+
 </section>
 
 
 <!-- PROFILE -->
-<section id="profilePage" class="profile-page hidden">
+
+<section id="profileModal" class="profile-modal hidden">
 
 <header class="profile-header">
 
-<button class="profile-back" onclick="closeProfile()">
+<button class="back-btn" onclick="closeProfile()">
 ←
 </button>
 
-<h2>Profil</h2>
+<h2>Profilim</h2>
 
 </header>
 
 
-<div class="profile-container">
+<div class="profile-content">
 
-<div class="profile-card">
+<div class="profile-photo-area">
 
-<div class="profile-photo-wrap">
-
-<div id="profilePhoto" class="profile-photo">
+<div id="profileBigAvatar" class="profile-big-avatar">
 S
 </div>
-
-<button class="photo-button" onclick="choosePhoto()">
-📷
-</button>
 
 <input
 id="photoInput"
 type="file"
 accept="image/*"
 class="hidden"
-onchange="handlePhoto(event)"
+onchange="changeProfilePhoto(event)"
+>
+
+<button
+class="photo-btn"
+onclick="document.getElementById('photoInput').click()"
+>
+📷 Profil fotoğrafı seç
+</button>
+
+</div>
+
+
+<div class="profile-card">
+
+<h3>👤 Kişisel bilgiler</h3>
+
+<div class="profile-grid">
+
+<div class="profile-field full">
+
+<label>Kullanıcı adı</label>
+
+<input
+id="profileName"
+maxlength="20"
+>
+</div>
+
+
+<div class="profile-field">
+
+<label>Yaş</label>
+
+<input
+id="profileAge"
+type="number"
+min="13"
+max="100"
+placeholder="Örn. 30"
 >
 
 </div>
 
-<h1 id="profileName">Kullanıcı</h1>
 
-<div id="profileUsername" class="username">
-@kullanici
-</div>
-
-
-<div id="profileDetails" class="profile-details">
-
-<div class="detail">
-<div class="detail-label">📍 Şehir</div>
-<div id="viewCity" class="detail-value">Belirtilmemiş</div>
-</div>
-
-<div class="detail">
-<div class="detail-label">⚧️ Cinsiyet</div>
-<div id="viewGender" class="detail-value">Belirtilmemiş</div>
-</div>
-
-<div class="detail">
-<div class="detail-label">🎂 Yaş</div>
-<div id="viewAge" class="detail-value">Belirtilmemiş</div>
-</div>
-
-<div class="detail full">
-<div class="detail-label">🎵 Hoşlandığı müzik türleri</div>
-<div id="viewGenres" class="detail-value">Henüz seçilmedi</div>
-</div>
-
-</div>
-
-
-<button class="edit-btn" onclick="toggleEditProfile()">
-✏️ Profili Düzenle
-</button>
-
-
-<div id="profileEdit" class="profile-edit hidden">
-
-<div class="input-group">
-
-<label>Yaşadığın şehir</label>
-
-<input
-id="cityInput"
-class="input"
-type="text"
-maxlength="40"
-placeholder="Örn. Heilbronn">
-
-</div>
-
-
-<div class="input-group">
+<div class="profile-field">
 
 <label>Cinsiyet</label>
 
-<select id="genderInput" class="input">
+<select id="profileGender">
+
 <option value="">Seçiniz</option>
 <option value="Erkek">Erkek</option>
 <option value="Kadın">Kadın</option>
 <option value="Diğer">Diğer</option>
-<option value="Belirtmek istemiyorum">Belirtmek istemiyorum</option>
+
 </select>
 
 </div>
 
 
-<div class="input-group">
+<div class="profile-field full">
 
-<label>Yaş</label>
+<label>Yaşadığın şehir</label>
 
 <input
-id="ageInput"
-class="input"
-type="number"
-min="13"
-max="100"
-placeholder="Örn. 30">
+id="profileCity"
+placeholder="Örn. Heilbronn"
+maxlength="40"
+>
+
+</div>
+
+</div>
 
 </div>
 
 
-<div class="input-group">
+<div class="profile-card">
 
-<label>Hoşlandığın müzik türleri</label>
+<h3>🎶 Hoşlandığın müzik türleri</h3>
 
-<div class="genre-list">
+<div class="genres">
 
-<button type="button" class="genre" data-genre="Pop" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Pop
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Rap" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Rap
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Hip-Hop" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Hip-Hop
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Rock" onclick="toggleGenre(this)">
-Rock
-</button>
-
-<button type="button" class="genre" data-genre="R&B" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 R&B
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Elektronik" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
+Rock
+</div>
+
+<div class="genre" onclick="toggleGenre(this)">
 Elektronik
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Arabesk" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Arabesk
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Türkçe Pop" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Türkçe Pop
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Klasik" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Klasik
-</button>
+</div>
 
-<button type="button" class="genre" data-genre="Jazz" onclick="toggleGenre(this)">
+<div class="genre" onclick="toggleGenre(this)">
 Jazz
-</button>
+</div>
 
 </div>
+
 </div>
 
 
@@ -1250,13 +1343,6 @@ Jazz
 💾 Profili Kaydet
 </button>
 
-<button class="cancel-profile" onclick="toggleEditProfile()">
-Vazgeç
-</button>
-
-</div>
-
-</div>
 </div>
 
 </section>
@@ -1267,9 +1353,9 @@ Vazgeç
 
 <script>
 
-/* =========================
+/* =====================================================
    SONGS
-========================= */
+===================================================== */
 
 const songs=[
 
@@ -1277,6 +1363,7 @@ const songs=[
 id:1,
 title:"Blinding Lights",
 artist:"The Weeknd",
+search:"Blinding Lights The Weeknd",
 album:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=300"
 },
 
@@ -1284,6 +1371,7 @@ album:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=300"
 id:2,
 title:"Starboy",
 artist:"The Weeknd",
+search:"Starboy The Weeknd",
 album:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300"
 },
 
@@ -1291,6 +1379,7 @@ album:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300"
 id:3,
 title:"One Of The Girls",
 artist:"The Weeknd, JENNIE, Lily Rose Depp",
+search:"One Of The Girls The Weeknd Jennie",
 album:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300"
 },
 
@@ -1298,6 +1387,7 @@ album:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300"
 id:4,
 title:"Shape of You",
 artist:"Ed Sheeran",
+search:"Shape of You Ed Sheeran",
 album:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=300"
 },
 
@@ -1305,6 +1395,7 @@ album:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=300"
 id:5,
 title:"Believer",
 artist:"Imagine Dragons",
+search:"Believer Imagine Dragons",
 album:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=300"
 },
 
@@ -1312,6 +1403,7 @@ album:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=300"
 id:6,
 title:"Lose Yourself",
 artist:"Eminem",
+search:"Lose Yourself Eminem",
 album:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=300"
 },
 
@@ -1319,15 +1411,16 @@ album:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=300"
 id:7,
 title:"Sweater Weather",
 artist:"The Neighbourhood",
+search:"Sweater Weather The Neighbourhood",
 album:"https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=300"
 }
 
 ];
 
 
-/* =========================
+/* =====================================================
    DEMO USERS
-========================= */
+===================================================== */
 
 const demoUsers=[
 
@@ -1369,17 +1462,17 @@ color:"#eab308"
 ];
 
 
-/* =========================
+/* =====================================================
    STATE
-========================= */
+===================================================== */
 
 let currentUser={
 id:Date.now(),
 name:"",
 songId:null,
-city:"",
-gender:"",
 age:"",
+gender:"",
+city:"",
 genres:[],
 photo:""
 };
@@ -1387,812 +1480,1207 @@ photo:""
 let activeChatUser=null;
 
 
-/* =========================
+/* =====================================================
+   HISTORY / BACK BUTTON FIX
+===================================================== */
+
+let currentView="login";
+
+function pushView(view){
+
+    currentView=view;
+
+    history.pushState(
+        {view:view},
+        "",
+        "#" + view
+    );
+}
+
+window.addEventListener("popstate",function(){
+
+    if(
+        !document
+        .getElementById("chat")
+        .classList.contains("hidden")
+    ){
+
+        closeChat(false);
+        return;
+    }
+
+    if(
+        !document
+        .getElementById("profileModal")
+        .classList.contains("hidden")
+    ){
+
+        closeProfile(false);
+        return;
+    }
+
+    if(currentView==="song"){
+
+        showApp(false);
+        return;
+    }
+
+    if(currentView==="app"){
+
+        returnToSong(false);
+        return;
+    }
+
+});
+
+
+/* =====================================================
    LOGIN
-========================= */
+===================================================== */
 
 function continueToMusic(){
 
-const input=document.getElementById("usernameInput");
-const username=input.value.trim();
+    const input=
+        document.getElementById("usernameInput");
 
-if(!username){
+    const username=input.value.trim();
 
-showToast("Lütfen bir kullanıcı adı gir.");
-input.focus();
-return;
+    if(!username){
 
+        showToast("Lütfen bir kullanıcı adı gir.");
+
+        input.focus();
+
+        return;
+    }
+
+    currentUser.name=username;
+
+    saveUser();
+
+    document
+    .getElementById("loginScreen")
+    .classList.add("hidden");
+
+    document
+    .getElementById("songScreen")
+    .classList.remove("hidden");
+
+    currentView="song";
+
+    renderSongs();
 }
 
-currentUser.name=username;
 
-saveUser();
-
-document.getElementById("loginScreen").classList.add("hidden");
-document.getElementById("songScreen").classList.remove("hidden");
-
-renderSongs();
-
-}
-
-
-/* =========================
-   SONGS
-========================= */
+/* =====================================================
+   SONG LIST
+===================================================== */
 
 function renderSongs(filter=""){
 
-const container=document.getElementById("songList");
+    const container=
+        document.getElementById("songList");
 
-const filtered=songs.filter(song=>
-song.title.toLowerCase().includes(filter.toLowerCase()) ||
-song.artist.toLowerCase().includes(filter.toLowerCase())
-);
+    const filtered=songs.filter(song=>
 
-container.innerHTML="";
+        song.title
+        .toLowerCase()
+        .includes(filter.toLowerCase())
 
-filtered.forEach(song=>{
+        ||
 
-const element=document.createElement("div");
+        song.artist
+        .toLowerCase()
+        .includes(filter.toLowerCase())
 
-element.className="song-option";
+    );
 
-element.onclick=()=>selectSong(song.id);
+    container.innerHTML="";
 
-element.innerHTML=`
+    filtered.forEach(song=>{
 
-<img class="album" src="${song.album}" alt="">
+        const element=
+            document.createElement("div");
 
-<div class="song-info">
+        element.className="song-option";
 
-<div class="song-title">
-${escapeHtml(song.title)}
-</div>
+        element.onclick=()=>selectSong(song.id);
 
-<div class="artist">
-${escapeHtml(song.artist)}
-</div>
+        element.innerHTML=`
 
-</div>
+        <img
+        class="album"
+        src="${song.album}"
+        >
 
-<div class="select-icon">→</div>
+        <div class="song-info">
 
-`;
+        <div class="song-title">
+        ${song.title}
+        </div>
 
-container.appendChild(element);
+        <div class="artist">
+        ${song.artist}
+        </div>
 
-});
+        </div>
+
+        <div class="select-icon">
+        →
+        </div>
+
+        `;
+
+        container.appendChild(element);
+
+    });
 
 }
 
 
 function filterSongs(){
 
-renderSongs(
-document.getElementById("songSearch").value
-);
+    const value=
+        document.getElementById("songSearch").value;
+
+    renderSongs(value);
 
 }
 
 
-/* =========================
+/* =====================================================
    SELECT SONG
-========================= */
+===================================================== */
 
-function selectSong(songId){
+async function selectSong(songId){
 
-currentUser.songId=songId;
+    currentUser.songId=songId;
 
-saveUser();
+    saveUser();
 
-document.getElementById("songScreen").classList.add("hidden");
-document.getElementById("app").classList.remove("hidden");
+    document
+    .getElementById("songScreen")
+    .classList.add("hidden");
 
-updateCurrentSong();
-renderPeople();
+    document
+    .getElementById("app")
+    .classList.remove("hidden");
 
-showToast("Şarkın seçildi 🎵");
+    currentView="app";
+
+    updateCurrentSong();
+
+    renderPeople();
+
+    await loadSongPreview();
+
+    playAudio();
 
 }
 
 
-/* =========================
+/* =====================================================
    CURRENT SONG
-========================= */
+===================================================== */
 
 function updateCurrentSong(){
 
-const song=songs.find(s=>s.id===currentUser.songId);
+    const song=
+        songs.find(s=>s.id===currentUser.songId);
 
-if(!song)return;
+    if(!song)return;
 
-document.getElementById("currentAlbum").src=song.album;
-document.getElementById("currentTitle").textContent=song.title;
-document.getElementById("currentArtist").textContent=song.artist;
+    document
+    .getElementById("currentAlbum")
+    .src=song.album;
 
-updateAvatar(
-document.getElementById("headerAvatar")
-);
+    document
+    .getElementById("currentTitle")
+    .textContent=song.title;
 
-}
+    document
+    .getElementById("currentArtist")
+    .textContent=song.artist;
 
-
-/* =========================
-   PEOPLE
-========================= */
-
-function renderPeople(){
-
-const container=document.getElementById("peopleList");
-
-const sameSong=demoUsers.filter(
-user=>user.songId===currentUser.songId
-);
-
-document.getElementById("onlineCount").textContent=
-`${sameSong.length} kişi`;
-
-container.innerHTML="";
-
-if(sameSong.length===0){
-
-container.innerHTML=`
-
-<div class="empty">
-
-<div class="empty-icon">🎧</div>
-
-<h3>Şimdilik yalnızsın</h3>
-
-<p>
-Bu şarkıyı şu anda dinleyen başka biri bulunamadı.
-</p>
-
-</div>
-
-`;
-
-return;
+    updateAvatar();
 
 }
 
 
-sameSong.forEach(user=>{
+/* =====================================================
+   GET REAL PREVIEW
+===================================================== */
 
-const element=document.createElement("div");
+async function loadSongPreview(){
 
-element.className="person";
+    const song=
+        songs.find(s=>s.id===currentUser.songId);
 
-element.onclick=()=>openChat(user);
+    if(!song)return;
 
-const avatar=user.name.charAt(0).toUpperCase();
+    const audio=
+        document.getElementById("audioPlayer");
 
-element.innerHTML=`
+    try{
 
-<div
-class="person-avatar"
-style="background:${user.color}"
->
-${avatar}
-<span class="status"></span>
-</div>
+        showToast("Şarkı hazırlanıyor... 🎵");
 
-<div class="person-info">
+        const url=
+        "https://itunes.apple.com/search?term="+
+        encodeURIComponent(song.search)+
+        "&entity=song&limit=5";
 
-<div class="person-name">
-${escapeHtml(user.name)}
-</div>
+        const response=
+            await fetch(url);
 
-<div class="person-status">
-🎧 Bu şarkıyı dinliyor
-</div>
+        const data=
+            await response.json();
 
-</div>
+        const result=
+            data.results.find(
+                x=>x.previewUrl
+            );
 
-<div class="chat-arrow">›</div>
+        if(!result){
 
-`;
+            showToast(
+                "Bu şarkının önizlemesi bulunamadı."
+            );
 
-container.appendChild(element);
+            return;
+        }
+
+        audio.src=result.previewUrl;
+
+        if(result.artworkUrl100){
+
+            document
+            .getElementById("currentAlbum")
+            .src=
+                result.artworkUrl100
+                .replace("100x100","600x600");
+
+        }
+
+        audio.load();
+
+    }catch(error){
+
+        console.log(error);
+
+        showToast(
+            "Şarkı yüklenirken bağlantı hatası."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   AUDIO PLAYER
+===================================================== */
+
+function playAudio(){
+
+    const audio=
+        document.getElementById("audioPlayer");
+
+    if(!audio.src){
+
+        showToast("Şarkı henüz hazır değil.");
+
+        return;
+    }
+
+    audio.play()
+    .then(()=>{
+
+        document
+        .getElementById("playButton")
+        .textContent="Ⅱ";
+
+    })
+    .catch(()=>{
+
+        showToast(
+            "▶ düğmesine basarak şarkıyı başlat."
+        );
+
+    });
+
+}
+
+
+function toggleAudio(){
+
+    const audio=
+        document.getElementById("audioPlayer");
+
+    if(audio.paused){
+
+        playAudio();
+
+    }else{
+
+        audio.pause();
+
+        document
+        .getElementById("playButton")
+        .textContent="▶";
+
+    }
+
+}
+
+
+function restartSong(){
+
+    const audio=
+        document.getElementById("audioPlayer");
+
+    audio.currentTime=0;
+
+    playAudio();
+
+}
+
+
+function seekAudio(){
+
+    const audio=
+        document.getElementById("audioPlayer");
+
+    if(!audio.duration)return;
+
+    const value=
+        document.getElementById("progressBar").value;
+
+    audio.currentTime=
+        (value/100)*audio.duration;
+
+}
+
+
+function changeVolume(){
+
+    document
+    .getElementById("audioPlayer")
+    .volume=
+        document.getElementById("volumeControl").value;
+
+}
+
+
+document
+.getElementById("audioPlayer")
+.addEventListener("timeupdate",function(){
+
+    if(!this.duration)return;
+
+    document
+    .getElementById("progressBar")
+    .value=
+        (this.currentTime/this.duration)*100;
+
+    document
+    .getElementById("currentTime")
+    .textContent=
+        formatTime(this.currentTime);
 
 });
 
+
+document
+.getElementById("audioPlayer")
+.addEventListener("ended",function(){
+
+    document
+    .getElementById("playButton")
+    .textContent="▶";
+
+});
+
+
+function formatTime(seconds){
+
+    if(!seconds||isNaN(seconds))
+        return "0:00";
+
+    const min=
+        Math.floor(seconds/60);
+
+    const sec=
+        Math.floor(seconds%60)
+        .toString()
+        .padStart(2,"0");
+
+    return min+":"+sec;
+
 }
 
 
-/* =========================
+/* =====================================================
+   PEOPLE
+===================================================== */
+
+function renderPeople(){
+
+    const container=
+        document.getElementById("peopleList");
+
+    const sameSong=
+        demoUsers.filter(
+            user=>
+                user.songId===currentUser.songId
+        );
+
+    document
+    .getElementById("onlineCount")
+    .textContent=
+        `${sameSong.length} kişi`;
+
+    container.innerHTML="";
+
+    if(!sameSong.length){
+
+        container.innerHTML=`
+
+        <div class="empty">
+
+        <div class="empty-icon">
+        🎧
+        </div>
+
+        <h3>
+        Şimdilik yalnızsın
+        </h3>
+
+        <p>
+        Bu şarkıyı şu anda dinleyen
+        başka biri bulunamadı.
+        </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    sameSong.forEach(user=>{
+
+        const element=
+            document.createElement("div");
+
+        element.className="person";
+
+        element.onclick=
+            ()=>openChat(user);
+
+        element.innerHTML=`
+
+        <div
+        class="person-avatar"
+        style="background:${user.color}"
+        >
+
+        ${user.name.charAt(0).toUpperCase()}
+
+        <span class="status"></span>
+
+        </div>
+
+        <div class="person-info">
+
+        <div class="person-name">
+        ${user.name}
+        </div>
+
+        <div class="person-status">
+        🎧 Bu şarkıyı dinliyor
+        </div>
+
+        </div>
+
+        <div class="chat-arrow">
+        ›
+        </div>
+
+        `;
+
+        container.appendChild(element);
+
+    });
+
+}
+
+
+/* =====================================================
    CHANGE SONG
-========================= */
+===================================================== */
 
 function changeSong(){
 
-document.getElementById("app").classList.add("hidden");
-document.getElementById("songScreen").classList.remove("hidden");
+    document
+    .getElementById("audioPlayer")
+    .pause();
 
-renderSongs();
+    document
+    .getElementById("app")
+    .classList.add("hidden");
+
+    document
+    .getElementById("songScreen")
+    .classList.remove("hidden");
+
+    currentView="song";
+
+    renderSongs();
 
 }
 
 
-/* =========================
+function returnToSong(){
+
+    document
+    .getElementById("app")
+    .classList.add("hidden");
+
+    document
+    .getElementById("songScreen")
+    .classList.remove("hidden");
+
+    currentView="song";
+
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function goHome(){
+
+    closeChat(false);
+    closeProfile(false);
+
+    document
+    .getElementById("songScreen")
+    .classList.add("hidden");
+
+    document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+    currentView="app";
+
+}
+
+
+/* =====================================================
    CHAT
-========================= */
+===================================================== */
 
 function openChat(user){
 
-activeChatUser=user;
+    activeChatUser=user;
 
-document.getElementById("chat").classList.remove("hidden");
+    document
+    .getElementById("chat")
+    .classList.remove("hidden");
 
-document.getElementById("chatName").textContent=user.name;
+    document
+    .getElementById("chatName")
+    .textContent=user.name;
 
-document.getElementById("chatAvatar").textContent=
-user.name.charAt(0).toUpperCase();
+    document
+    .getElementById("chatAvatar")
+    .textContent=
+        user.name.charAt(0).toUpperCase();
 
-document.getElementById("chatAvatar").style.background=user.color;
+    document
+    .getElementById("chatAvatar")
+    .style.background=user.color;
 
-loadMessages();
+    loadMessages();
 
-setTimeout(()=>{
-document.getElementById("messageInput").focus();
-},100);
+    history.pushState(
+        {view:"chat"},
+        "",
+        "#chat"
+    );
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("messageInput")
+        .focus();
+
+    },100);
 
 }
 
 
-function closeChat(){
+function closeChat(useHistory=true){
 
-document.getElementById("chat").classList.add("hidden");
+    document
+    .getElementById("chat")
+    .classList.add("hidden");
 
-activeChatUser=null;
+    activeChatUser=null;
+
+    if(useHistory){
+
+        if(history.state?.view==="chat")
+            history.back();
+
+    }
 
 }
 
 
-/* =========================
-   MESSAGES
-========================= */
+/* =====================================================
+   CHAT STORAGE
+===================================================== */
 
 function getChatKey(){
 
-if(!activeChatUser)return null;
+    if(!activeChatUser)return null;
 
-const ids=[
-currentUser.id,
-activeChatUser.id
-].sort();
+    const ids=[
+        currentUser.id,
+        activeChatUser.id
+    ].sort();
 
-return `chat_${ids[0]}_${ids[1]}`;
+    return `chat_${ids[0]}_${ids[1]}`;
 
 }
 
 
 function loadMessages(){
 
-const container=document.getElementById("messages");
+    const container=
+        document.getElementById("messages");
 
-const key=getChatKey();
+    const key=getChatKey();
 
-let messages=JSON.parse(
-localStorage.getItem(key)||"[]"
-);
+    let messages=
+        JSON.parse(
+            localStorage.getItem(key)||"[]"
+        );
 
-if(messages.length===0){
+    if(messages.length===0){
 
-messages=[
+        messages=[
 
-{
-from:activeChatUser.id,
-text:`Selam ${currentUser.name}! 👋`,
-time:getTime()
-},
+        {
+            from:activeChatUser.id,
+            text:`Selam ${currentUser.name}! 👋`,
+            time:getTime()
+        },
 
-{
-from:activeChatUser.id,
-text:"Bu şarkıyı ben de çok seviyorum 🎧",
-time:getTime()
-}
+        {
+            from:activeChatUser.id,
+            text:"Bu şarkıyı ben de çok seviyorum 🎧",
+            time:getTime()
+        }
 
-];
+        ];
 
-localStorage.setItem(key,JSON.stringify(messages));
+        localStorage.setItem(
+            key,
+            JSON.stringify(messages)
+        );
 
-}
+    }
 
-container.innerHTML="";
+    container.innerHTML="";
 
-messages.forEach(renderMessage);
+    messages.forEach(renderMessage);
 
-scrollMessages();
+    scrollMessages();
 
 }
 
 
 function renderMessage(message){
 
-const container=document.getElementById("messages");
+    const container=
+        document.getElementById("messages");
 
-const div=document.createElement("div");
+    const div=
+        document.createElement("div");
 
-const isMe=message.from===currentUser.id;
+    const isMe=
+        message.from===currentUser.id;
 
-div.className=`message ${isMe?"me":"other"}`;
+    div.className=
+        "message "+(isMe?"me":"other");
 
-div.innerHTML=`
+    div.innerHTML=
+        escapeHtml(message.text)+
+        `<span class="message-time">${message.time}</span>`;
 
-${escapeHtml(message.text)}
-
-<span class="message-time">
-${message.time}
-</span>
-
-`;
-
-container.appendChild(div);
+    container.appendChild(div);
 
 }
 
 
-/* =========================
+/* =====================================================
    SEND MESSAGE
-========================= */
+===================================================== */
 
 function sendMessage(event){
 
-event.preventDefault();
+    event.preventDefault();
 
-const input=document.getElementById("messageInput");
+    const input=
+        document.getElementById("messageInput");
 
-const text=input.value.trim();
+    const text=input.value.trim();
 
-if(!text||!activeChatUser)return;
+    if(!text||!activeChatUser)return;
 
-const key=getChatKey();
+    const key=getChatKey();
 
-const messages=JSON.parse(
-localStorage.getItem(key)||"[]"
-);
+    const messages=
+        JSON.parse(
+            localStorage.getItem(key)||"[]"
+        );
 
-const message={
-from:currentUser.id,
-text:text,
-time:getTime()
-};
+    const message={
 
-messages.push(message);
+        from:currentUser.id,
+        text:text,
+        time:getTime()
 
-localStorage.setItem(key,JSON.stringify(messages));
+    };
 
-renderMessage(message);
+    messages.push(message);
 
-input.value="";
+    localStorage.setItem(
+        key,
+        JSON.stringify(messages)
+    );
 
-scrollMessages();
+    renderMessage(message);
 
-setTimeout(fakeReply,1200);
+    input.value="";
+
+    scrollMessages();
+
+    setTimeout(fakeReply,1200);
 
 }
 
 
 function fakeReply(){
 
-if(!activeChatUser)return;
+    if(!activeChatUser)return;
 
-const key=getChatKey();
+    const key=getChatKey();
 
-const messages=JSON.parse(
-localStorage.getItem(key)||"[]"
-);
+    const messages=
+        JSON.parse(
+            localStorage.getItem(key)||"[]"
+        );
 
-const replies=[
+    const replies=[
 
-"Aynen 😄",
+        "Aynen 😄",
+        "Müzik zevkimiz aynıymış.",
+        "Bu şarkı tam şu anki moduma uyuyor.",
+        "Burada seni bulmak güzel oldu 🎧",
+        "Sen de bu tarz müzikleri seviyorsun demek 😎"
 
-"Müzik zevkimiz aynıymış.",
+    ];
 
-"Bu şarkı tam şu anki moduma uyuyor.",
+    const message={
 
-"Burada seni bulmak güzel oldu 🎧",
+        from:activeChatUser.id,
 
-"Sen de The Weeknd seviyorsun demek 😎"
+        text:
+            replies[
+                Math.floor(
+                    Math.random()*replies.length
+                )
+            ],
 
-];
+        time:getTime()
 
-const message={
+    };
 
-from:activeChatUser.id,
+    messages.push(message);
 
-text:replies[
-Math.floor(Math.random()*replies.length)
-],
+    localStorage.setItem(
+        key,
+        JSON.stringify(messages)
+    );
 
-time:getTime()
+    renderMessage(message);
 
-};
-
-messages.push(message);
-
-localStorage.setItem(key,JSON.stringify(messages));
-
-renderMessage(message);
-
-scrollMessages();
+    scrollMessages();
 
 }
 
 
-/* =========================
+/* =====================================================
    PROFILE
-========================= */
+===================================================== */
 
 function openProfile(){
 
-document.getElementById("profilePage").classList.remove("hidden");
+    document
+    .getElementById("profileModal")
+    .classList.remove("hidden");
 
-renderProfile();
+    loadProfileForm();
 
-}
-
-
-function closeProfile(){
-
-document.getElementById("profilePage").classList.add("hidden");
-
-}
-
-
-/*
-   Mobil tarayıcı geri tuşu:
-   Profil açıksa önce profili kapatır.
-   Sohbet açıksa sohbeti kapatır.
-   Siteyi terk etmez.
-*/
-
-window.addEventListener("popstate",function(){
-
-if(!document.getElementById("chat").classList.contains("hidden")){
-
-closeChat();
-return;
-
-}
-
-if(!document.getElementById("profilePage").classList.contains("hidden")){
-
-closeProfile();
-return;
-
-}
-
-});
-
-
-function renderProfile(){
-
-document.getElementById("profileName").textContent=
-currentUser.name||"Kullanıcı";
-
-document.getElementById("profileUsername").textContent=
-"@"+(currentUser.name||"kullanici")
-.toLowerCase()
-.replace(/\s+/g,"");
-
-document.getElementById("viewCity").textContent=
-currentUser.city||"Belirtilmemiş";
-
-document.getElementById("viewGender").textContent=
-currentUser.gender||"Belirtilmemiş";
-
-document.getElementById("viewAge").textContent=
-currentUser.age
-?currentUser.age+" yaş"
-:"Belirtilmemiş";
-
-document.getElementById("viewGenres").textContent=
-currentUser.genres&&currentUser.genres.length
-?currentUser.genres.join(", ")
-:"Henüz seçilmedi";
-
-updateProfilePhoto();
+    history.pushState(
+        {view:"profile"},
+        "",
+        "#profile"
+    );
 
 }
 
 
-/* =========================
-   EDIT PROFILE
-========================= */
+function closeProfile(useHistory=true){
 
-function toggleEditProfile(){
+    document
+    .getElementById("profileModal")
+    .classList.add("hidden");
 
-const edit=document.getElementById("profileEdit");
+    if(useHistory){
 
-if(edit.classList.contains("hidden")){
+        if(history.state?.view==="profile")
+            history.back();
 
-document.getElementById("cityInput").value=
-currentUser.city||"";
-
-document.getElementById("genderInput").value=
-currentUser.gender||"";
-
-document.getElementById("ageInput").value=
-currentUser.age||"";
-
-document.querySelectorAll(".genre").forEach(btn=>{
-
-btn.classList.toggle(
-"selected",
-(currentUser.genres||[]).includes(btn.dataset.genre)
-);
-
-});
-
-edit.classList.remove("hidden");
-
-}else{
-
-edit.classList.add("hidden");
-
-}
+    }
 
 }
 
 
-function toggleGenre(button){
+function loadProfileForm(){
 
-button.classList.toggle("selected");
+    document
+    .getElementById("profileName")
+    .value=currentUser.name||"";
+
+    document
+    .getElementById("profileAge")
+    .value=currentUser.age||"";
+
+    document
+    .getElementById("profileGender")
+    .value=currentUser.gender||"";
+
+    document
+    .getElementById("profileCity")
+    .value=currentUser.city||"";
+
+    updateProfilePhoto();
+
+    document
+    .querySelectorAll(".genre")
+    .forEach(el=>{
+
+        el.classList.toggle(
+            "active",
+            currentUser.genres.includes(
+                el.textContent.trim()
+            )
+        );
+
+    });
+
+}
+
+
+function toggleGenre(element){
+
+    element.classList.toggle("active");
 
 }
 
 
 function saveProfile(){
 
-const city=document.getElementById("cityInput").value.trim();
+    currentUser.name=
+        document
+        .getElementById("profileName")
+        .value.trim();
 
-const gender=document.getElementById("genderInput").value;
+    currentUser.age=
+        document
+        .getElementById("profileAge")
+        .value;
 
-const age=document.getElementById("ageInput").value;
+    currentUser.gender=
+        document
+        .getElementById("profileGender")
+        .value;
 
-const genres=[...document.querySelectorAll(".genre.selected")]
-.map(btn=>btn.dataset.genre);
+    currentUser.city=
+        document
+        .getElementById("profileCity")
+        .value.trim();
 
-currentUser.city=city;
-currentUser.gender=gender;
-currentUser.age=age;
-currentUser.genres=genres;
+    currentUser.genres=
+        [...document.querySelectorAll(".genre.active")]
+        .map(x=>x.textContent.trim());
 
-saveUser();
+    saveUser();
 
-renderProfile();
+    updateAvatar();
 
-document.getElementById("profileEdit").classList.add("hidden");
-
-showToast("Profilin kaydedildi ✓");
+    showToast("Profilin kaydedildi ✓");
 
 }
 
 
-/* =========================
+/* =====================================================
    PROFILE PHOTO
-========================= */
+===================================================== */
 
-function choosePhoto(){
+function changeProfilePhoto(event){
 
-document.getElementById("photoInput").click();
+    const file=
+        event.target.files[0];
 
-}
+    if(!file)return;
 
+    if(file.size>2*1024*1024){
 
-function handlePhoto(event){
+        showToast("Fotoğraf en fazla 2 MB olabilir.");
 
-const file=event.target.files[0];
+        return;
+    }
 
-if(!file)return;
+    const reader=
+        new FileReader();
 
-if(file.size>3*1024*1024){
+    reader.onload=function(){
 
-showToast("Fotoğraf 3 MB'dan küçük olmalı.");
+        currentUser.photo=
+            reader.result;
 
-return;
+        saveUser();
 
-}
+        updateProfilePhoto();
 
-const reader=new FileReader();
+        updateAvatar();
 
-reader.onload=function(e){
+        showToast("Profil fotoğrafı güncellendi 📷");
 
-currentUser.photo=e.target.result;
+    };
 
-saveUser();
-
-renderProfile();
-
-updateAvatar(
-document.getElementById("headerAvatar")
-);
-
-showToast("Profil fotoğrafın güncellendi 📷");
-
-};
-
-reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
 
 }
 
 
 function updateProfilePhoto(){
 
-const element=document.getElementById("profilePhoto");
+    const box=
+        document.getElementById("profileBigAvatar");
 
-if(currentUser.photo){
+    if(currentUser.photo){
 
-element.innerHTML=
-`<img src="${currentUser.photo}" alt="Profil">`;
+        box.innerHTML=
+            `<img src="${currentUser.photo}">`;
 
-}else{
+    }else{
 
-element.innerHTML=
-currentUser.name
-?currentUser.name.charAt(0).toUpperCase()
-:"S";
+        box.textContent=
+            currentUser.name
+            ?currentUser.name.charAt(0).toUpperCase()
+            :"S";
 
-}
-
-}
-
-
-function updateAvatar(element){
-
-if(!element)return;
-
-if(currentUser.photo){
-
-element.innerHTML=
-`<img src="${currentUser.photo}" alt="Profil">`;
-
-}else{
-
-element.textContent=
-currentUser.name
-?currentUser.name.charAt(0).toUpperCase()
-:"S";
-
-}
+    }
 
 }
 
 
-/* =========================
-   HOME
-========================= */
+function updateAvatar(){
 
-function goHome(){
+    const avatar=
+        document.getElementById("headerAvatar");
 
-document.getElementById("profilePage").classList.add("hidden");
-document.getElementById("chat").classList.add("hidden");
-document.getElementById("app").classList.remove("hidden");
+    if(!avatar)return;
+
+    if(currentUser.photo){
+
+        avatar.innerHTML=
+            `<img src="${currentUser.photo}">`;
+
+    }else{
+
+        avatar.textContent=
+            currentUser.name
+            ?currentUser.name.charAt(0).toUpperCase()
+            :"S";
+
+    }
 
 }
 
 
-/* =========================
+/* =====================================================
    STORAGE
-========================= */
+===================================================== */
 
 function saveUser(){
 
-localStorage.setItem(
-"sameSongUser",
-JSON.stringify(currentUser)
-);
+    localStorage.setItem(
+        "sameSongUser",
+        JSON.stringify(currentUser)
+    );
 
 }
 
 
-/* =========================
+function restoreUser(){
+
+    const saved=
+        localStorage.getItem("sameSongUser");
+
+    if(!saved)return;
+
+    try{
+
+        const user=
+            JSON.parse(saved);
+
+        currentUser={
+            ...currentUser,
+            ...user
+        };
+
+        if(
+            currentUser.name &&
+            currentUser.songId
+        ){
+
+            document
+            .getElementById("loginScreen")
+            .classList.add("hidden");
+
+            document
+            .getElementById("songScreen")
+            .classList.add("hidden");
+
+            document
+            .getElementById("app")
+            .classList.remove("hidden");
+
+            currentView="app";
+
+            updateCurrentSong();
+
+            renderPeople();
+
+        }
+
+    }catch(e){
+
+        console.log(e);
+
+    }
+
+}
+
+
+/* =====================================================
    HELPERS
-========================= */
+===================================================== */
 
 function scrollMessages(){
 
-const container=document.getElementById("messages");
+    const container=
+        document.getElementById("messages");
 
-container.scrollTop=container.scrollHeight;
+    container.scrollTop=
+        container.scrollHeight;
 
 }
 
 
 function getTime(){
 
-return new Date().toLocaleTimeString(
-"tr-TR",
-{
-hour:"2-digit",
-minute:"2-digit"
-}
-);
+    return new Date()
+    .toLocaleTimeString(
+        "tr-TR",
+        {
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
 
 }
 
 
 function escapeHtml(text){
 
-const div=document.createElement("div");
+    const div=
+        document.createElement("div");
 
-div.textContent=text;
+    div.textContent=text;
 
-return div.innerHTML;
+    return div.innerHTML;
 
 }
 
 
 function showToast(message){
 
-const toast=document.getElementById("toast");
+    const toast=
+        document.getElementById("toast");
 
-toast.textContent=message;
+    toast.textContent=message;
 
-toast.classList.add("show");
+    toast.classList.add("show");
 
-setTimeout(()=>{
-toast.classList.remove("show");
-},2200);
+    setTimeout(()=>{
 
-}
+        toast.classList.remove("show");
 
-
-/* =========================
-   RESTORE SESSION
-========================= */
-
-window.addEventListener("DOMContentLoaded",()=>{
-
-const saved=localStorage.getItem("sameSongUser");
-
-if(!saved)return;
-
-try{
-
-const user=JSON.parse(saved);
-
-if(user&&user.name){
-
-currentUser={
-id:user.id||Date.now(),
-name:user.name||"",
-songId:user.songId||null,
-city:user.city||"",
-gender:user.gender||"",
-age:user.age||"",
-genres:Array.isArray(user.genres)?user.genres:[],
-photo:user.photo||""
-};
-
-document.getElementById("loginScreen").classList.add("hidden");
-
-if(currentUser.songId){
-
-document.getElementById("app").classList.remove("hidden");
-
-updateCurrentSong();
-renderPeople();
-
-}else{
-
-document.getElementById("songScreen").classList.remove("hidden");
-
-renderSongs();
+    },2200);
 
 }
 
+
+/* =====================================================
+   START
+===================================================== */
+
+window.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+    /*
+       İlk history kaydı.
+       Android geri tuşunun doğrudan
+       siteden çıkmasını engellemek
+       için kullanılıyor.
+    */
+
+    if(!history.state){
+
+        history.replaceState(
+            {view:"app"},
+            "",
+            location.href
+        );
+
+    }
+
+    restoreUser();
+
 }
-
-}catch(error){
-
-console.log(error);
-
-}
-
-});
+);
 
 </script>
 
