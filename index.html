@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Müzik Platformu</title>
+    <title>Müzik Platformu - Tam Sürüm</title>
     <style>
         * {
             box-sizing: border-box;
@@ -21,20 +21,19 @@
         }
         .container {
             background-color: #1a1d24;
-            padding: 30px;
+            padding: 25px;
             border-radius: 16px;
             width: 100%;
             max-width: 420px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            text-align: center;
         }
-        h2 {
-            margin-bottom: 20px;
+        h2, h3 {
             color: #00ff88;
+            margin-bottom: 15px;
+            text-align: center;
         }
         .input-group {
             margin-bottom: 15px;
-            text-align: left;
         }
         input {
             width: 100%;
@@ -68,39 +67,48 @@
             background-color: #00cc6a;
         }
         .divider {
-            margin: 20px 0;
+            margin: 15px 0;
             font-size: 12px;
             color: #888;
+            text-align: center;
         }
         .btn-social {
             background-color: #ffffff;
             color: #000;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-        /* Müzik Paneli Stilleri (Giriş yapılınca açılır) */
+        
+        /* Ana Uygulama Alanı */
         #app-screen {
             display: none;
-            text-align: left;
         }
-        .header-bar {
+        .profile-card {
+            background-color: #242832;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            justify-content: space-between;
         }
-        .search-box {
-            width: 100%;
-            margin-bottom: 20px;
+        .profile-info h4 {
+            color: #00ff88;
+            font-size: 15px;
+        }
+        .profile-info p {
+            color: #aaa;
+            font-size: 12px;
         }
         .playlist {
-            max-height: 250px;
+            max-height: 220px;
             overflow-y: auto;
+            margin-bottom: 15px;
         }
         .song-item {
             background-color: #242832;
-            padding: 10px 15px;
+            padding: 10px 14px;
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -111,10 +119,29 @@
             background-color: #2f3542;
             border-left: 4px solid #00ff88;
         }
+        .player-bar {
+            background-color: #12141c;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        .control-btn {
+            background: none;
+            border: none;
+            color: #00ff88;
+            font-size: 18px;
+            cursor: pointer;
+        }
         .logout-btn {
             background-color: #ff4757;
             color: white;
-            margin-top: 20px;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -125,51 +152,66 @@
         <div id="login-screen">
             <h2>Giriş Yap</h2>
             <div class="input-group">
-                <input type="text" id="username" placeholder="Kullanıcı Adı">
+                <input type="text" id="username" placeholder="Kullanıcı Adı (Örn: Samet)">
             </div>
             <div class="input-group">
                 <input type="password" placeholder="Şifre">
             </div>
-            <button class="btn btn-primary" onclick="login()">Giriş Yap</button>
+            <button class="btn btn-primary" onclick="login()">Sisteme Giriş Yap</button>
             
-            <div class="divider">veya sosyal medya ile devam et</div>
+            <div class="divider">veya hızlı bağlan</div>
             
             <button class="btn btn-social" onclick="login()">Google ile Devam Et</button>
-            <button class="btn btn-social" onclick="login()">Spotify ile Devam Et</button>
+            <button class="btn btn-social" onclick="login()">Spotify ile Bağlan</button>
         </div>
 
-        <!-- MÜZİK PLATFORMU ANA EKRANI -->
+        <!-- ANA PLATFORM EKRANI -->
         <div id="app-screen">
-            <div class="header-bar">
-                <h3 id="welcome-msg" style="color: #00ff88;">Hoş Geldiniz</h3>
-                <span style="font-size: 12px; color: #aaa;">🎵 Müzik Arşivi</span>
+            <!-- Profil Bilgileri -->
+            <div class="profile-card">
+                <div class="profile-info">
+                    <h4 id="profile-name">Kullanıcı</h4>
+                    <p>Aktif Üye • Standart Plan</p>
+                </div>
+                <span style="font-size: 20px;">🎧</span>
             </div>
 
-            <div class="search-box">
-                <input type="text" placeholder="Şarkı veya sanatçı ara...">
+            <div class="input-group">
+                <input type="text" placeholder="Şarkı, sanatçı veya albüm ara...">
             </div>
 
-            <h4 style="margin-bottom: 10px; font-size: 14px; color: #ccc;">Popüler Parçalar</h4>
+            <h3 style="font-size: 14px; text-align: left; margin-bottom: 8px;">Çalma Listesi</h3>
             <div class="playlist">
-                <div class="song-item" onclick="playSong('Gece Yolculuğu')">
-                    <span>Gece Yolculuğu</span>
+                <div class="song-item" onclick="playRealSong('Lofi Chill Beat', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">
+                    <div>
+                        <div style="font-size: 14px; font-weight: 500;">Lofi Chill Beat</div>
+                        <div style="font-size: 11px; color: #888;">Ambient Beats</div>
+                    </div>
                     <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
                 </div>
-                <div class="song-item" onclick="playSong('Yıldızlı Akşamlar')">
-                    <span>Yıldızlı Akşamlar</span>
+                <div class="song-item" onclick="playRealSong('Akustik Gitar Rüzgarı', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">
+                    <div>
+                        <div style="font-size: 14px; font-weight: 500;">Akustik Gitar Rüzgarı</div>
+                        <div style="font-size: 11px; color: #888;">Enstrümantal</div>
+                    </div>
                     <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
                 </div>
-                <div class="song-item" onclick="playSong('Geçmiş Zaman')">
-                    <span>Geçmiş Zaman</span>
-                    <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
-                </div>
-                <div class="song-item" onclick="playSong('Uzak Diyarlar')">
-                    <span>Uzak Diyarlar</span>
+                <div class="song-item" onclick="playRealSong('Gece Yolculuğu', 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">
+                    <div>
+                        <div style="font-size: 14px; font-weight: 500;">Gece Yolculuğu</div>
+                        <div style="font-size: 11px; color: #888;">Synthwave</div>
+                    </div>
                     <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
                 </div>
             </div>
 
-            <button class="btn logout-btn" onclick="logout()">Çıkış Yap</button>
+            <!-- Aktif Müzik Çalar Paneli -->
+            <div class="player-bar">
+                <div id="now-playing" style="font-size: 13px; color: #00ff88; margin-bottom: 5px;">Şarkı Seçilmedi</div>
+                <audio id="audio-player" controls style="width: 100%; height: 35px;"></audio>
+            </div>
+
+            <button class="btn logout-btn" onclick="logout()">Güvenli Çıkış Yap</button>
         </div>
     </div>
 
@@ -177,19 +219,27 @@
         function login() {
             const usernameInput = document.getElementById('username').value;
             const displayName = usernameInput ? usernameInput : 'Müziksever';
-            document.getElementById('welcome-msg').innerText = 'Hoş Geldin, ' + displayName;
+            document.getElementById('profile-name').innerText = displayName;
             
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('app-screen').style.display = 'block';
         }
 
         function logout() {
+            document.getElementById('audio-player').pause();
             document.getElementById('app-screen').style.display = 'none';
             document.getElementById('login-screen').style.display = 'block';
         }
 
-        function playSong(songName) {
-            alert(songName + ' çalınıyor 🎧 Keyifli dinlemeler!');
+        function playRealSong(songTitle, audioUrl) {
+            const player = document.getElementById('audio-player');
+            const nowPlaying = document.getElementById('now-playing');
+            
+            nowPlaying.innerText = "Çalınıyor: " + songTitle;
+            player.src = audioUrl;
+            player.play().catch(error => {
+                console.log("Oynatma hatası:", error);
+            });
         }
     </script>
 
