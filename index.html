@@ -2,50 +2,53 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Müzik Platformu Pro</title>
+    <title>Müzik Platformu</title>
     <style>
-        body { background: #0f1117; color: white; font-family: sans-serif; margin: 0; }
-        .screen { display: none; padding: 20px; padding-bottom: 80px; }
+        body { background: #0f1117; color: white; font-family: sans-serif; margin: 0; display: flex; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 400px; padding: 20px; }
+        .screen { display: none; }
         .active { display: block; }
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #333; margin-bottom: 20px; }
-        .profile-icon { width: 40px; height: 40px; background: #00ff88; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: black; font-weight: bold; }
-        input { width: 100%; padding: 12px; margin: 8px 0; background: #1a1d24; border: 1px solid #333; color: white; border-radius: 8px; }
-        .song-card { background: #1a1d24; padding: 15px; margin-bottom: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .player { position: fixed; bottom: 0; width: 100%; background: #12141c; padding: 15px; }
+        
+        /* Giriş Ekranı Düzeni */
+        #login-screen { display: flex; flex-direction: column; justify-content: center; height: 80vh; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #1a1d24; border: 1px solid #333; color: white; border-radius: 8px; }
+        button { width: 100%; padding: 12px; background: #00ff88; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .song-card { background: #1a1d24; padding: 15px; margin-bottom: 10px; border-radius: 10px; cursor: pointer; }
+        .player { position: fixed; bottom: 0; width: 100%; max-width: 400px; background: #12141c; padding: 15px; display: none; }
     </style>
 </head>
 <body>
 
-    <!-- GİRİŞ -->
-    <div id="login-screen" class="screen active">
-        <h2 style="text-align: center; color: #00ff88; margin-top: 50px;">Giriş Yap</h2>
-        <input type="text" id="username" placeholder="Kullanıcı Adı">
-        <button onclick="login()" style="width: 100%; padding: 12px; background: #00ff88; border: none; border-radius: 8px; font-weight: bold;">Giriş Yap</button>
-    </div>
-
-    <!-- ANA MÜZİK EKRANI -->
-    <div id="home-screen" class="screen">
-        <div class="header">
-            <h3>Keşfet</h3>
-            <div class="profile-icon" onclick="show('profile-screen')">👤</div>
+    <div class="container">
+        <!-- GİRİŞ -->
+        <div id="login-screen" class="screen active">
+            <h2 style="text-align: center; color: #00ff88; margin-bottom: 20px;">Giriş Yap</h2>
+            <input type="text" id="username" placeholder="Kullanıcı Adı">
+            <button onclick="login()">Giriş Yap</button>
         </div>
-        <div class="song-card" onclick="play('Lofi Beat')"><span>Lofi Chill</span><span>▶</span></div>
-        <div class="song-card" onclick="play('Rock Hits')"><span>Rock Hits</span><span>▶</span></div>
-    </div>
 
-    <!-- PROFİL DÜZENLEME -->
-    <div id="profile-screen" class="screen">
-        <div class="header"><h3>Profilin</h3><span onclick="show('home-screen')" style="cursor:pointer">Kapat</span></div>
-        <input type="file" id="profile-pic" accept="image/*">
-        <input type="text" id="city" placeholder="Şehir">
-        <input type="number" id="age" placeholder="Yaş">
-        <input type="text" id="fav-music" placeholder="Sevdiğin Müzik Türü">
-        <button onclick="saveProfile()" style="width: 100%; padding: 12px; background: #00ff88; border: none; border-radius: 8px;">Kaydet</button>
-    </div>
+        <!-- ANA EKRAN -->
+        <div id="home-screen" class="screen">
+            <div class="header"><h3>Keşfet</h3><div onclick="show('profile-screen')" style="cursor:pointer">👤</div></div>
+            <div class="song-card" onclick="play('Lofi Chill')">Lofi Chill ▶</div>
+        </div>
 
-    <div class="player">
-        <div id="now-playing" style="font-size: 12px; margin-bottom: 5px;">Müzik seçilmedi</div>
-        <audio id="audio" controls style="width: 100%;"></audio>
+        <!-- PROFİL -->
+        <div id="profile-screen" class="screen">
+            <div class="header"><h3>Profil</h3><span onclick="show('home-screen')" style="cursor:pointer">Kapat</span></div>
+            <input type="text" placeholder="Şehir">
+            <input type="number" placeholder="Yaş">
+            <input type="text" placeholder="Sevdiğin Tür">
+            <button onclick="show('home-screen')">Kaydet</button>
+        </div>
+
+        <!-- MÜZİK ÇALAR -->
+        <div id="player-bar" class="player">
+            <div id="now-playing" style="font-size: 12px; margin-bottom: 5px;">Müzik seçilmedi</div>
+            <audio id="audio" controls style="width: 100%;"></audio>
+        </div>
     </div>
 
     <script>
@@ -53,9 +56,11 @@
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
         }
-        function login() { show('home-screen'); }
+        function login() {
+            document.getElementById('player-bar').style.display = 'block';
+            show('home-screen');
+        }
         function play(song) { document.getElementById('now-playing').innerText = "Çalıyor: " + song; }
-        function saveProfile() { alert("Bilgilerin başarıyla güncellendi!"); show('home-screen'); }
     </script>
 </body>
 </html>
