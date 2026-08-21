@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap</title>
+    <title>Müzik Platformu</title>
     <style>
         * {
             box-sizing: border-box;
@@ -22,23 +22,23 @@
         .container {
             background-color: #1a1d24;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 16px;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            max-width: 420px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             text-align: center;
         }
         h2 {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             color: #00ff88;
         }
         .input-group {
-            margin-bottom: 16px;
+            margin-bottom: 15px;
             text-align: left;
         }
         input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid #2a2f3a;
             background-color: #0f1117;
@@ -71,31 +71,127 @@
             margin: 20px 0;
             font-size: 12px;
             color: #888;
-            position: relative;
         }
         .btn-social {
             background-color: #ffffff;
             color: #000;
             margin-bottom: 10px;
         }
+        /* Müzik Paneli Stilleri (Giriş yapılınca açılır) */
+        #app-screen {
+            display: none;
+            text-align: left;
+        }
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-box {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .playlist {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .song-item {
+            background-color: #242832;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .song-item:hover {
+            background-color: #2f3542;
+            border-left: 4px solid #00ff88;
+        }
+        .logout-btn {
+            background-color: #ff4757;
+            color: white;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Giriş Yap</h2>
-        <div class="input-group">
-            <input type="text" placeholder="Kullanıcı Adı">
+        <!-- GİRİŞ EKRANI -->
+        <div id="login-screen">
+            <h2>Giriş Yap</h2>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Kullanıcı Adı">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Şifre">
+            </div>
+            <button class="btn btn-primary" onclick="login()">Giriş Yap</button>
+            
+            <div class="divider">veya sosyal medya ile devam et</div>
+            
+            <button class="btn btn-social" onclick="login()">Google ile Devam Et</button>
+            <button class="btn btn-social" onclick="login()">Spotify ile Devam Et</button>
         </div>
-        <div class="input-group">
-            <input type="password" placeholder="Şifre">
+
+        <!-- MÜZİK PLATFORMU ANA EKRANI -->
+        <div id="app-screen">
+            <div class="header-bar">
+                <h3 id="welcome-msg" style="color: #00ff88;">Hoş Geldiniz</h3>
+                <span style="font-size: 12px; color: #aaa;">🎵 Müzik Arşivi</span>
+            </div>
+
+            <div class="search-box">
+                <input type="text" placeholder="Şarkı veya sanatçı ara...">
+            </div>
+
+            <h4 style="margin-bottom: 10px; font-size: 14px; color: #ccc;">Popüler Parçalar</h4>
+            <div class="playlist">
+                <div class="song-item" onclick="playSong('Gece Yolculuğu')">
+                    <span>Gece Yolculuğu</span>
+                    <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
+                </div>
+                <div class="song-item" onclick="playSong('Yıldızlı Akşamlar')">
+                    <span>Yıldızlı Akşamlar</span>
+                    <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
+                </div>
+                <div class="song-item" onclick="playSong('Geçmiş Zaman')">
+                    <span>Geçmiş Zaman</span>
+                    <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
+                </div>
+                <div class="song-item" onclick="playSong('Uzak Diyarlar')">
+                    <span>Uzak Diyarlar</span>
+                    <span style="color: #00ff88; font-size: 12px;">▶ Çal</span>
+                </div>
+            </div>
+
+            <button class="btn logout-btn" onclick="logout()">Çıkış Yap</button>
         </div>
-        <button class="btn btn-primary">Giriş Yap</button>
-        
-        <div class="divider">veya şununla devam et</div>
-        
-        <button class="btn btn-social">Google ile Devam Et</button>
     </div>
+
+    <script>
+        function login() {
+            const usernameInput = document.getElementById('username').value;
+            const displayName = usernameInput ? usernameInput : 'Müziksever';
+            document.getElementById('welcome-msg').innerText = 'Hoş Geldin, ' + displayName;
+            
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('app-screen').style.display = 'block';
+        }
+
+        function logout() {
+            document.getElementById('app-screen').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'block';
+        }
+
+        function playSong(songName) {
+            alert(songName + ' çalınıyor 🎧 Keyifli dinlemeler!');
+        }
+    </script>
 
 </body>
 </html>
