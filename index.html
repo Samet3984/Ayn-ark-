@@ -2,58 +2,64 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Müzik Platformu | Premium</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Music Experience</title>
     <style>
-        :root { --accent: #00ff88; --bg: #0f1117; --card: #1a1d24; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; }
-        .screen { display: none; padding: 20px; animation: fadeIn 0.3s; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        
+        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+        .screen { display: none; padding: 40px 20px; height: 100vh; box-sizing: border-box; }
         .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* GİRİŞ */
-        .login-box { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 90vh; }
-        h1 { color: var(--accent); font-size: 2.5rem; margin-bottom: 2rem; }
-        input { width: 100%; max-width: 300px; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: var(--card); color: white; }
-        .btn { width: 100%; max-width: 300px; padding: 15px; border-radius: 12px; border: none; background: var(--accent); color: black; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        /* GİRİŞ EKRANI */
+        .login-box { display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 20px; }
+        h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+        input { background: #1a1a1a; border: none; padding: 25px; border-radius: 20px; color: #fff; font-size: 1.2rem; width: 100%; box-sizing: border-box; }
+        .login-btn { background: #fff; color: #000; padding: 25px; border-radius: 20px; font-size: 1.2rem; font-weight: 700; border: none; cursor: pointer; }
 
-        /* ANA SAYFA & PROFİL */
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .avatar { width: 45px; height: 45px; border-radius: 50%; background: #333; border: 2px solid var(--accent); }
-        .card { background: var(--card); padding: 20px; border-radius: 16px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
-        .player { position: fixed; bottom: 0; width: 100%; background: #12141c; padding: 20px; box-sizing: border-box; border-top: 1px solid #333; display: none; }
+        /* ANA SAYFA */
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .profile-btn { width: 50px; height: 50px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .song-item { background: #111; padding: 25px; border-radius: 25px; margin-bottom: 15px; font-size: 1.3rem; font-weight: 600; cursor: pointer; }
+
+        /* PROFİL DÜZENLEME */
+        .profile-container { display: flex; flex-direction: column; gap: 15px; }
+        .save-btn { background: #00ff88; color: #000; padding: 20px; border-radius: 20px; border: none; font-weight: 700; margin-top: 20px; cursor: pointer; }
+        
+        .player { position: fixed; bottom: 0; left: 0; right: 0; background: #0a0a0a; padding: 20px; display: none; border-top: 1px solid #333; }
     </style>
 </head>
 <body>
 
     <div id="login-screen" class="screen active">
         <div class="login-box">
-            <h1>Müzikify</h1>
-            <input type="text" id="username" placeholder="Kullanıcı Adı">
-            <button class="btn" onclick="login()">Hadi Başlayalım</button>
-            <button class="btn" style="background: white;">Google ile Giriş</button>
+            <h1>Müziği<br>Keşfet.</h1>
+            <input type="text" placeholder="Kullanıcı adını gir">
+            <button class="login-btn" onclick="show('home-screen')">Giriş Yap</button>
         </div>
     </div>
 
     <div id="home-screen" class="screen">
         <div class="header">
-            <h2>Keşfet</h2>
-            <div class="avatar" onclick="show('profile-screen')" style="display:flex; align-items:center; justify-content:center;">👤</div>
+            <h2 style="font-size: 2rem;">Keşfet</h2>
+            <div class="profile-btn" onclick="show('profile-screen')">👤</div>
         </div>
-        <div class="card" onclick="play('Lofi Dreams')"><span>Lofi Dreams</span><span>▶</span></div>
-        <div class="card" onclick="play('Jazz Night')"><span>Jazz Night</span><span>▶</span></div>
+        <div class="song-item" onclick="play('Lofi Study')">Lofi Study ▶</div>
+        <div class="song-item" onclick="play('Deep Tech')">Deep Tech ▶</div>
     </div>
 
     <div id="profile-screen" class="screen">
-        <div class="header"><h2>Profilin</h2><span onclick="show('home-screen')">Kapat</span></div>
-        <input type="file" style="border:none;">
-        <input type="text" placeholder="Şehir">
-        <input type="number" placeholder="Yaş">
-        <input type="text" placeholder="Sevdiğin Müzik Türü">
-        <button class="btn" onclick="show('home-screen')">Değişiklikleri Kaydet</button>
+        <h2 style="font-size: 2rem;">Profilini Düzenle</h2>
+        <div class="profile-container">
+            <input type="file">
+            <input type="text" placeholder="Şehir">
+            <input type="number" placeholder="Yaş">
+            <input type="text" placeholder="Müzik Türü">
+            <button class="save-btn" onclick="show('home-screen')">Kaydet</button>
+        </div>
     </div>
 
     <div id="player-bar" class="player">
-        <div id="now-playing" style="color: var(--accent); margin-bottom: 5px;">Müzik seçilmedi</div>
         <audio id="audio" controls style="width: 100%;"></audio>
     </div>
 
@@ -61,9 +67,9 @@
         function show(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            if(id === 'home-screen') document.getElementById('player-bar').style.display = 'block';
         }
-        function login() { document.getElementById('player-bar').style.display = 'block'; show('home-screen'); }
-        function play(s) { document.getElementById('now-playing').innerText = "Çalıyor: " + s; }
+        function play(s) { alert(s + " başlatılıyor..."); }
     </script>
 </body>
 </html>
